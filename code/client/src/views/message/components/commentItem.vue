@@ -18,7 +18,7 @@
         <div class="item-box">
           <div class="box-title">
             {{ item.nickname }}
-            <span>{{ item.createTime | formatTime('yyyy-MM-dd hh:mm') }}</span>
+            <span>{{ item.createTime | formatTime("yyyy-MM-dd hh:mm") }}</span>
           </div>
           <div class="box-content" v-html="item.content"></div>
           <div class="item-icon">
@@ -34,7 +34,7 @@
             </div>
             <div class="box-icon" @click="handleCilckReply(item)">
               <Icon name="icon-reply02"></Icon>
-              <span>{{ getReplyBox(item._id) ? '取消' : '回复' }}</span>
+              <span>{{ getReplyBox(item._id) ? "取消" : "回复" }}</span>
             </div>
           </div>
 
@@ -101,10 +101,6 @@ export default {
       likeList: [],
     };
   },
-  watch: {},
-  created() { },
-  mounted() { },
-  beforeDestroy() { },
   methods: {
     // 点赞
     handleLikes(id) {
@@ -118,7 +114,7 @@ export default {
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => { });
+        .finally(() => {});
     },
     handleCilckReply(item) {
       this.currentId = item._id;
@@ -132,7 +128,7 @@ export default {
         replyContent: reply.content,
         replyUser: reply.nickname,
         byReplyUser: this.byReplyUser,
-        byReplyUser: this.byReplyUser,
+        // byReplyUser: this.byReplyUser,
         replyHeaderColor: colorList[Math.floor(Math.random() * 7)],
       };
       return apiUpdateReplys(params)
@@ -145,7 +141,7 @@ export default {
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => { });
+        .finally(() => {});
     },
   },
 };
@@ -184,7 +180,7 @@ export default {
     position: relative;
     padding-bottom: 10px;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;

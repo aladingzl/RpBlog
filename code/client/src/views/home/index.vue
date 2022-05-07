@@ -7,10 +7,13 @@
       <!-- 侧边栏 -->
       <div class="side-wrapper">
         <myself></myself>
+        <!-- 搜索 -->
         <search :isCache="true"></search>
         <!-- 标签 -->
         <label-classify></label-classify>
+        <!-- 热门点击 -->
         <side-article :sideClassify="BROWSE_STATUS"></side-article>
+        <!-- 最新推荐 -->
         <side-article :sideClassify="RECOMMEND_STATUS"></side-article>
       </div>
     </div>

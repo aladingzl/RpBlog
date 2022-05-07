@@ -46,10 +46,6 @@ export default {
       nickname: "",
     };
   },
-  props: {},
-  computed: {},
-  destroyed() { },
-  mounted() { },
   methods: {
     handlerSubmit() {
       if (!this.inputContent) {

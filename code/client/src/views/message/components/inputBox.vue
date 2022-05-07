@@ -1,5 +1,6 @@
 <template>
   <div type="text" class="input-box-wrapper">
+    <!-- contenteditable: 是一个枚举属性，表示元素是否可被用户编辑 -->
     <div
       class="content textarea"
       ref="richText"
@@ -15,10 +16,6 @@
 <script>
 export default {
   name: "input-box",
-  props: {},
-  data() {
-    return {};
-  },
   computed: {
     listeners() {
       return Object.assign({}, this.$listeners, {
@@ -29,7 +26,6 @@ export default {
       });
     },
   },
-  mounted() { },
   methods: {
     focus() {
       this.$refs.richText.focus();

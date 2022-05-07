@@ -46,15 +46,9 @@ export default {
       default: "",
     },
   },
-  computed: {},
   data() {
     return {};
   },
-  watch: {},
-  created() { },
-  mounted() { },
-  beforeDestroy() { },
-  methods: {},
 };
 </script>
 

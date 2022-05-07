@@ -23,8 +23,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "labelClassify",
-  components: {},
-  props: {},
   computed: {
     ...mapGetters({ labelList: "label/labelList" }),
   },

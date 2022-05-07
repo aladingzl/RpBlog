@@ -12,42 +12,40 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "search",
   components: {},
   props: {
-    // 是否存储在vuex
+    // 是否存储在 vuex
     isCache: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      cacheKeyword: 'search/keyword'
-    })
+      cacheKeyword: "search/keyword",
+    }),
   },
   data() {
     return {
       keyword: "",
     };
   },
-  watch: {},
   created() {
     if (!this.isCache) {
       this.keyword = this.cacheKeyword;
     }
   },
-  mounted() { },
   beforeDestroy() {
     if (!this.isCache) {
-      this.setKeyword('');
+      this.setKeyword("");
     }
   },
   methods: {
     ...mapMutations({
-      setKeyword: 'search/setKeyword'
+      setKeyword: "search/setKeyword",
     }),
     goto() {
       if (this.isCache) {
@@ -56,7 +54,7 @@ export default {
       this.$router.push({
         path: `/label/${this.keyword}`,
         query: {
-          search: 'search'
+          search: "search",
         },
       });
     },

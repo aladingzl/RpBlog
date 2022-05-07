@@ -64,8 +64,6 @@ import like from "src/mixins/like";
 import label from "src/mixins/label";
 export default {
   name: "blogClassify",
-  components: {},
-  props: {},
   mixins: [like, label],
   computed: {
     getTitle({ isQuery, keyword, total }) {
@@ -79,9 +77,9 @@ export default {
       return (value) =>
         isQuery && value.includes(keyword)
           ? value.replace(
-            new RegExp(keyword, "g"),
-            `<font color="#f75353">${keyword}</font>`
-          )
+              new RegExp(keyword, "g"),
+              `<font color="#f75353">${keyword}</font>`
+            )
           : value;
     },
   },
@@ -96,6 +94,7 @@ export default {
       keyword: "",
     };
   },
+  // 监听
   watch: {
     $route: {
       handler(to, from) {
@@ -113,8 +112,6 @@ export default {
   created() {
     document.documentElement.scrollTop = document.body.scrollTop = 0;
   },
-  mounted() { },
-  beforeDestroy() { },
   methods: {
     goto(id) {
       this.$router.push({
@@ -172,7 +169,7 @@ export default {
     font-size: 18px;
     position: relative;
     &::after {
-      content: ' ';
+      content: " ";
       position: absolute;
       height: 2px;
       width: 4%;

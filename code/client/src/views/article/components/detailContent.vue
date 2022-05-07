@@ -79,9 +79,6 @@ export default {
       immediate: true,
     },
   },
-  created() {},
-  mounted() {},
-  beforeDestroy() {},
   methods: {
     goto(id) {
       this.$router.push({ path: `/article/detail/${id}`, query: this.query });

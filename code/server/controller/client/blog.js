@@ -7,32 +7,54 @@ module.exports = {
     );
     let {
       keyword = null,
-      isQuery = null,
-      pageindex = 1,
-      pagesize = 9,
-      sortBy = null,
-      isMobile = false,
-      type = null,
+        isQuery = null,
+        pageindex = 1,
+        pagesize = 9,
+        sortBy = null,
+        isMobile = false,
+        type = null,
     } = ctx.request.query;
 
     // 条件参数
-    let conditions = { isVisible: true };
-    // 用isMobile来区分移动端和pc端
+    let conditions = {
+      isVisible: true
+    };
+    // 用 isMobile 来区分移动端和pc端
     let reg = new RegExp(keyword, 'i');
     if (isMobile) {
       if (type) {
         conditions.type = type;
       }
       if (keyword) {
-        let searchObj = [{ title: { $regex: reg } }, { desc: { $regex: reg } }];
+        let searchObj = [{
+          title: {
+            $regex: reg
+          }
+        }, {
+          desc: {
+            $regex: reg
+          }
+        }];
         conditions['$or'] = [...searchObj];
       }
     } else {
       if (keyword) {
         // 区分搜索框、标签场景
-        let searchObj = isQuery
-          ? [{ title: { $regex: reg } }, { desc: { $regex: reg } }]
-          : [{ type: { $regex: reg } }];
+        let searchObj = isQuery ?
+          [{
+            title: {
+              $regex: reg
+            }
+          }, {
+            desc: {
+              $regex: reg
+            }
+          }] :
+          [{
+            type: {
+              $regex: reg
+            }
+          }];
         conditions['$or'] = [...searchObj];
       }
     }
@@ -66,7 +88,9 @@ module.exports = {
     );
     let _id = ctx.request.query._id;
     try {
-      let data = await ctx.findOne(blogModel, { _id });
+      let data = await ctx.findOne(blogModel, {
+        _id
+      });
       return ctx.send(data);
     } catch (e) {
       return ctx.sendError(e);
@@ -79,9 +103,15 @@ module.exports = {
     );
     let paramsData = ctx.request.body;
     let num = JSON.parse(paramsData.isLike) ? -1 : 1;
-    let options = { $inc: { likes: num } };
+    let options = {
+      $inc: {
+        likes: num
+      }
+    };
     try {
-      let data = await ctx.update(blogModel, { _id: paramsData._id }, options);
+      let data = await ctx.update(blogModel, {
+        _id: paramsData._id
+      }, options);
       ctx.send();
     } catch (e) {
       ctx.sendError(e);
@@ -93,9 +123,15 @@ module.exports = {
       '----------------文章浏览量 client_api/blog/updatePV------------------'
     );
     let paramsData = ctx.request.body;
-    let options = { $inc: { pv: 1 } };
+    let options = {
+      $inc: {
+        pv: 1
+      }
+    };
     try {
-      let data = await ctx.update(blogModel, { _id: paramsData._id }, options);
+      let data = await ctx.update(blogModel, {
+        _id: paramsData._id
+      }, options);
       ctx.send();
     } catch (e) {
       ctx.sendError(e);
